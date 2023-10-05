@@ -82,23 +82,23 @@ WSGI_APPLICATION = 'inneruplift.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'PASSWORD': '8BbtzgpVVgi02VrtmNv1',
-        'HOST': 'containers-us-west-75.railway.app',
-        'PORT': '6609'
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'railway',
+#         'USER': 'postgres',
+#         'PASSWORD': '8BbtzgpVVgi02VrtmNv1',
+#         'HOST': 'containers-us-west-75.railway.app',
+#         'PORT': '6609'
+#     }
+# }
 
 
 #  email verification 
@@ -148,11 +148,19 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
-MEDIA_URL = "/image/download/"
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media') #add
+# STATIC_URL = '/static/'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
+# MEDIA_URL = "/image/download/"
+# MEDIA_ROOT = os.path.join(BASE_DIR) #add
 
+STATIC_URL = '/static/'
+MEDIA_URL = "/image/download/"
+MEDIA_ROOT = BASE_DIR
+STATIC_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 #  customize user panel 
 JAZZMIN_SETTINGS = {
     "site_title": "inner Admin",

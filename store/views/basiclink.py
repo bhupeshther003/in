@@ -55,7 +55,6 @@ def contact_email(request):
             email,
         {'bhupeshther5@gmail.com'} # This should be a list or tuple   # Replace with the recipient's email
     )
-
     return redirect("contactpage")#    else:
 #     return render(request, 'contact.html')
 
