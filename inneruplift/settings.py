@@ -155,12 +155,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 MEDIA_URL = "/image/download/"
-MEDIA_ROOT = BASE_DIR
-STATIC_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
-STATIC_URL = '/static/'
+MEDIA_ROOT = os.path.join(BASE_DIR)
+STATIC_DIRS = [os.path.join(BASE_DIR, 'static'),]
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 #  customize user panel 
 JAZZMIN_SETTINGS = {
     "site_title": "inner Admin",
