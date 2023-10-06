@@ -148,16 +148,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-# STATIC_URL = '/static/'
-# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
-# MEDIA_URL = "/image/download/"
-# MEDIA_ROOT = os.path.join(BASE_DIR) #add
-
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
 MEDIA_URL = "/image/download/"
-MEDIA_ROOT = BASE_DIR
-STATIC_DIRS = os.path.join(BASE_DIR, 'staticfiles_build','static'),
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+MEDIA_ROOT = os.path.join(BASE_DIR) #add
+
+# STATIC_URL = '/static/'
+# MEDIA_URL = "/image/download/"
+# MEDIA_ROOT = BASE_DIR
+# STATIC_DIRS = os.path.join(BASE_DIR, 'staticfiles_build','static'),
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 #  customize user panel 
 JAZZMIN_SETTINGS = {
     "site_title": "inner Admin",
