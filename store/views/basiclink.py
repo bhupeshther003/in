@@ -1,13 +1,19 @@
 from django.shortcuts import render , redirect
 from django.views import  View
-from store.models.customer import Customer
+from django.contrib.auth.decorators import login_required
+from store.models.customer import Newletter
+from django.core.mail import send_mail
+
 
 def home_page(request):
-    customer = request.session.get('customer')
-    return render(request, 'index.html', {'customer': customer})
+    return render(request,"index.html")
 
-# def lock_page(request):
-#     return render(request,"home.html",)
+def lock_page(request):
+    return render(request,"home.html")
+
+
+def lockbefore_page(request):
+    return render(request,"lockhome.html")
 
 def service_page(request):
     return render(request,"services.html")
@@ -24,7 +30,39 @@ def aboutus_page(request):
     return render(request,"about.html")
 
 def career_page(request):
-    return render(request,"career.html")
+     if request.method == "POST":
+        recipient_email = request.POST.get('recipient_email')
+        career_page = Newletter(recipient_email=recipient_email)
+        career_page.save()
+        admin_email_subject = 'Subscribe From Inner_uplift Newsletter'
+        admin_email_message = (
+            f'New subscribtion from newsletter: {recipient_email}\n'
+
+        )
+        send_mail(
+            admin_email_subject,
+            admin_email_message,
+            'bhupeshther5@gmail.com',
+            ['bhupeshther5@gmail.com'],  # Replace with the admin's email address
+            fail_silently=False,
+        )
+
+        # Send a confirmation email to the user
+        user_email_subject = 'Subscribe Inner_uplift Newsletter'
+        user_email_message = (
+            f'You have successfully subscribed to the Inner_uplift Newsletter with the email address: {recipient_email}\n'
+            f'Thank you for subscribing to Inner_uplift Newsletter.\n'
+            f'For more information, connect with us at bhupeshther5@gmail.com'
+        )
+        send_mail(
+            user_email_subject,
+            user_email_message,
+            'bhupeshther5@gmail.com',  # Replace with your sender email address
+            [recipient_email],
+            fail_silently=False,
+        )
+
+     return render(request, "career.html")
   
 def job_list_page(request):
     return render(request,"job_list.html")
@@ -55,10 +93,12 @@ def contact_email(request):
             email,
         {'bhupeshther5@gmail.com'} # This should be a list or tuple   # Replace with the recipient's email
     )
+
     return redirect("contactpage")#    else:
 #     return render(request, 'contact.html')
 
 
+@login_required(login_url='/adhd/login/')
 def adhd_quiz(request):
     return render(request,"adhd_quiz.html")
 

@@ -12,8 +12,6 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
-# import psycopg2
-
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -30,7 +28,7 @@ SECRET_KEY = '-95t%=#4o3@l-(-%ok9*h%n3!0(sdchjn%+_$5#umaj-!3bg*7'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -44,7 +42,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'store',
-    
 ]
 
 MIDDLEWARE = [
@@ -101,6 +98,7 @@ DATABASES = {
 }
 
 
+
 #  email verification 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -149,15 +147,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
 MEDIA_URL = "/image/download/"
-MEDIA_ROOT = os.path.join(BASE_DIR) #add
-
-# STATIC_URL = '/static/'
-# MEDIA_URL = "/image/download/"
-# MEDIA_ROOT = BASE_DIR
-# STATIC_DIRS = os.path.join(BASE_DIR, 'staticfiles_build','static'),
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+MEDIA_ROOT = BASE_DIR
+STATIC_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles_build', 'static')
 
 #  customize user panel 
 JAZZMIN_SETTINGS = {

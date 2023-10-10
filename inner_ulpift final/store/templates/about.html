@@ -1,0 +1,443 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+<style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    }
+    
+    #home {
+    width: 100%;
+    padding: 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    }
+    
+    .home-left {
+    height: 300px;
+    position: relative;
+    }
+    
+    .home-left img {
+    height: 100%;
+    border-radius: 10px;
+    }
+    
+    .home-right {
+    width: 50%;
+    }
+    
+    .home-heading {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    }
+    
+    .home-para {
+    margin-bottom: 20px;
+    }
+    
+    .btn {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    position: relative;
+    width: 0;
+    }
+    
+    .btn:hover::after {
+    content: '';
+    height: 4px;
+    position: absolute;
+    background-color: aqua;
+    left: 0;
+    bottom: -10px;
+    animation: width;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    border-radius: 5px;
+    }
+    
+    @keyframes width {
+    0% {
+    width: 0%;
+    }
+    
+    100% {
+    width: 100%;
+    }
+    }
+    
+    #workFlow {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 4rem;
+    }
+    
+    .heading {
+    margin: 1rem auto;
+    text-align: center;
+    }
+    
+    .para {
+    margin: 1rem auto;
+    }
+    
+    .num-container {
+    width: 70%;
+    margin: 1rem auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    }
+    
+    .num-item {
+    font-size: 1.5rem;
+    line-height: 1.4rem;
+    color: rgb(43, 126, 199);
+    }
+    
+    /* Our Goal */
+    #goal {
+    width: 80%;
+    margin: 2rem auto;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: center;
+    }
+    
+    .goal-left {
+    width: 60%;
+    line-height: 2rem;
+    }
+    
+    .goal-left h2 {
+    font-size: 2.4rem;
+    }
+    
+    .goal-left p {
+    line-height: 1.5rem;
+    margin: 1rem 0;
+    }
+    
+    .goal-left ul {
+    list-style: none;
+    margin-bottom: 1rem;
+    }
+    
+    .goal-left ul li::before {
+    line-height: 1.5rem;
+    content: '✓';
+    color: red;
+    }
+    
+    .goal-right {
+    position: relative;
+    width: 35%;
+    }
+    
+    .goal-right img {
+    width: 100%;
+    cursor: pointer;
+    border-radius: 10px;
+    filter: drop-shadow(3px 4px 5px black);
+    transition: all 0.2s linear;
+    }
+    
+    .goal-right img:hover {
+    transform: translateY(-5px);
+    filter: drop-shadow(5px 6px 7px black);
+    }
+    
+    /* Our Team */
+    #our-Team {
+    width: 80%;
+    margin: 4rem auto 1rem;
+    }
+    
+    #our-Team h2 {
+    text-align: center;
+    margin: 1rem auto 4rem;
+    position: relative;
+    }
+    
+    #our-Team h2::after {
+    content: '';
+    height: 4px;
+    margin: 0 auto;
+    text-align: center;
+    width: 15%;
+    background-color: aqua;
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    border-radius: 5px;
+    transform: translate(-50%);
+    }
+    
+    .teamContainer {
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    }
+    
+    .team-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0.5rem;
+    }
+    
+    .team-item h5 {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    }
+    
+    .team-item span {
+    margin-top: .4rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: rgb(7, 176, 176);
+    }
+    
+    .team-item img {
+    width: 80px;
+    }
+    
+    footer {
+    padding: 1rem 0;
+    text-align: center;
+    }
+    
+    @media screen and (max-width: 784px) {
+    #list {
+    display: none;
+    }
+    
+    #hamBurger {
+    cursor: pointer;
+    display: block;
+    z-index: 20;
+    font-size: 2rem;
+    }
+    
+    .navbar .responsive {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0%;
+    left: 100%;
+    padding: 2rem 0;
+    z-index: 2;
+    height: 100vh;
+    background-color: rgb(24, 23, 24);
+    width: 100%;
+    transition: all 0.5s linear;
+    opacity: 0.9;
+    }
+    
+    .navbar ul li {
+    margin: 0.4rem 0;
+    }
+    
+    .responsive.active {
+    left: 0%;
+    }
+    
+    .goal-right {
+    width: 100%;
+    margin: 0 auto 2rem;
+    }
+    
+    .goal-left {
+    width: 100%;
+    text-align: center;
+    }
+    
+    #goal {
+    flex-direction: column-reverse;
+    }
+    }
+    
+    @media screen and (max-width: 633px) {
+    #home {
+    flex-direction: column;
+    }
+    
+    .home-left {
+    width: 100%;
+    height: auto;
+    }
+    
+    .home-left img {
+    width: 100%;
+    }
+    
+    .home-right {
+    margin-top: 2rem;
+    width: 100%;
+    }
+    
+    .para {
+    width: 90%;
+    }
+    
+    .num-container {
+    flex-direction: column;
+    }
+    
+    .num-item {
+    margin: 1rem;
+    }
+    
+    .teamContainer {
+    justify-content: center;
+    }
+    }
+    </style>
+    </head>
+    
+    
+
+<!-- Page Content -->
+    <!-- Banner Starts Here -->
+    <div class="heading-page header-text">
+		<section class="page-heading">
+		  <div class="container">
+			<div class="row">
+			  <div class="col-lg-12">
+				<div class="text-content">
+				  <h4>about</h4>
+				  <h2>it our about  </h2>
+                  <p class="text-light">lorem ssghi d ksuhighik kshtdvohs so8fy kshohi kro8h  <br> ksre8wvb sdkhr8owhk ckewt8ohsck it8whsvdicwh8 bksd8b kjbw8ohkcx kgv8gb cdwg8 </p>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		</section>
+	  </div>
+	  
+	  <!-- Banner Ends Here -->
+    
+        <!-- Clients Section - Home Page -->
+        <section id="clients" class="clients">
+    
+          <div class="container-fluid" data-aos="fade-up">
+    
+            <div class="row gy-4">
+    
+              <div class="col-xl-2 col-md-3 col-6 client-logo">
+                <img src="assets/img/co-pantner/who.png" class="img-fluid" alt="">
+              </div><!-- End Client Item -->
+    
+              <div class="col-xl-2 col-md-3 col-6 client-logo">
+                <img src="assets/img/co-pantner/springer.png" class="img-fluid" alt="">
+              </div><!-- End Client Item -->
+    
+              <div class="col-xl-2 col-md-3 col-6 client-logo">
+                <img src="assets/img/co-pantner/elsevier-non-solus.svg" class="img-fluid" alt="">
+              </div><!-- End Client Item -->
+    
+              <div class="col-xl-2 col-md-3 col-6 client-logo">
+                <img src="assets/img/co-pantner/inner light.jpeg" class="img-fluid" alt="">
+              </div><!-- End Client Item -->
+    
+              <div class="col-xl-2 col-md-3 col-6 client-logo">
+                <img src="assets/img/co-pantner/logo.png" class="img-fluid" alt="">
+              </div><!-- End Client Item -->
+    
+              <div class="col-xl-2 col-md-3 col-6 client-logo">
+                <img src="assets/img/co-pantner/10BFB6E5-7CB1-4309-B6DA-7FB4AFD5EC6A.png" class="img-fluid" alt="">
+              </div><!-- End Client Item -->
+    
+            </div>
+    
+          </div>
+    
+        </section><!-- End Clients Section -->
+     <!--================== Home Section Starts from Here ==================-->
+     <section id="home">
+        <div class="home-left goal-right">
+            <img src="https://th.bing.com/th/id/R.bc4ca6b38b5794abd7c2cee85ed4e28a?rik=qaoM0aTOD05Y4g&riu=http%3a%2f%2fmohitpawar.com%2fwp-content%2fuploads%2f2019%2f06%2fhelp.jpg&ehk=Af0ri7kuAfm6Dphn8fIasa0jX4LG7CH%2f02MpeKqNkgE%3d&risl=&pid=ImgRaw&r=0" alt="">
+        </div>
+        <div class="home-right">
+            <h2 class="home-heading"> "Elevate Your Life: Inspire, Transform, Thrive." </h2>
+            <p class="home-para">At INNER UPLIFT, we are committed to helping you rise above challenges, tap into your inner strength, and reach new heights of personal and emotional fulfillment. Our mission is to inspire you with empowering content, transformative guidance, and a supportive community of like-minded individuals. Through our resources, articles, workshops, and expert insights, we aim to provide you with the tools you need to make lasting positive changes in your life. We believe that by harnessing your inner potential, you can not only transform your own life but also inspire and uplift those around you. Together, let's embark on a journey to elevate your life, nurture personal growth, and thrive in every aspect of your journey towards becoming the best version of yourself.</p>
+            <!-- <a href="" class="btn"> Our Work</a> -->
+        </div>
+    </section>
+    <!--================== Home Section Ends Here -->
+    
+    <!--================== Workflow Section Starts from Here ==================-->
+    <section id="workFlow">
+        <h2 class="heading"> "Unlock Your Potential, Transform Your Life."</h2>
+        <p class="para">At INNER UPLIFT, we believe in the transformative power that lies within each individual. Our mission is to empower you to "Unlock Your Potential, Transform Your Life." We understand that personal growth and self-discovery are lifelong journeys, and we are here to support and guide you every step of the way. Our team is dedicated to providing you with valuable insights, practical tools, and inspirational resources to help you unleash your true potential and create positive, lasting change in your life. Whether you're seeking to boost your confidence, overcome challenges, improve relationships, or simply find greater happiness and fulfillment, [Your Self-Help Website] is your trusted companion on the path to personal excellence. Join us in your quest for self-improvement, and together, let's embark on a journey of empowerment and transformation. Your potential is limitless, and your journey to a better you starts here.</p>
+        <div class="num-container">
+            <div class="num-item"><span>27,882 <br>Customers</span></div>
+            <div class="num-item"><span>90% <br>Action Plans</span></div>
+            <div class="num-item"><span>70,592 <br>Downloads</span></div>
+        </div>
+    </section>
+    <!--================== Workflow Section Ends Here -->
+    
+    
+    <!--================== Goal Section Starts from Here ==================-->
+    <section id="goal">
+        <div class="goal-left">
+            <h2>Our Goal</h2>
+            <p>At INNER UPLIFT, our primary goal is to be your unwavering partner on your personal growth journey. We are dedicated to empowering you to live a life filled with purpose, positivity, and profound transformation. Here's what drives us:</p>
+            <ul>
+                <li> Inspiration: We aim to be a constant source of inspiration in your life. Whether you're seeking motivation to pursue your dreams, overcome obstacles, or simply find joy in everyday moments, we're here to provide you with stories, quotes, and resources that ignite your inner spark.</li>
+                <li> Transformation: We believe that everyone has the power to change and evolve. Our goal is to equip you with the knowledge, strategies, and tools necessary to transform your life positively. From self-improvement techniques to personal development plans, we offer guidance tailored to your unique journey.</li>
+                <li> Expert Insights: Our platform hosts a wealth of expert insights and advice from professionals in various fields. Whether it's wellness, relationships, career, or mindfulness, we bring you expert guidance to help you navigate life's complexities with confidence.</li>
+            </ul>
+        </div>
+        <div class="goal-right">
+            <img src="https://ichef.bbci.co.uk/images/ic/640x360/p068qnsr.jpg" alt="">
+        </div>
+    </section>
+    <!--================== Goal Section Ends Here -->
+    
+    <!--================== Our Team Section Starts from Here ==================-->
+    <section id="our-Team">
+        <h2>Our Member</h2>
+        <div class="teamContainer">
+            <div class="team-item">
+                <img src="./teamMember.png" alt="">
+                <h5 class="member-name">John Smith</h5>
+                <span class="role">seo expert</span>
+            </div>
+            <div class="team-item">
+                <img src="./teamMember.png" alt="">
+                <h5 class="member-name">John Smith</h5>
+                <span class="role">seo expert</span>
+            </div>
+            <div class="team-item">
+                <img src="./teamMember.png" alt="">
+                <h5 class="member-name">John Smith</h5>
+                <span class="role">seo expert</span>
+            </div>
+            <div class="team-item">
+                <img src="./teamMember.png" alt="">
+                <h5 class="member-name">John Smith</h5>
+                <span class="role">seo expert</span>
+            </div>
+        </div>
+    </section>
+
+    {% endblock %}

@@ -27,15 +27,9 @@ class Customer(models.Model):
         return False
     
     def __str__(self):
-        return f"{self.first_name} {self.last_name}"
+        return self.first_name
     
 
-    
-# class Contact(models.Model):
-#     name = models.CharField(max_length=100)
-#     email = models.EmailField()
-#     subject = models.CharField(max_length=200)
-#     message = models.TextField()
 
-#     def __str__(self):
-#         return self.subject
+class Newletter(models.Model):
+    recipient_email = models.CharField(max_length=122)

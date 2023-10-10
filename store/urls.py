@@ -8,17 +8,15 @@ from .views.checkout import CheckOut
 from .views.orders import OrderView
 from .middlewares.auth import  auth_middleware
 from .views.basiclink import *
-from .views.payment import *
-from django.conf import settings
-from django.conf.urls.static import static
+from .views.payment import Payment
 
 urlpatterns = [
-    path('home', home_page, name='home_page'),  # main home page  
-    path('', Index.as_view(), name='homepage'), # store
+    path('home', home_page, name='home_page'),    
+    path('', Index.as_view(), name='homepage'),
     path('store', store , name='store'),
 
 #basic link  
-    
+    path('lock', lockbefore_page , name='loked_page'),
     path('cources', courses_page, name='coursespage'),
     path('contact', contact_page, name='contactpage'),
     path('services',service_page,name="services_page"),
@@ -31,7 +29,6 @@ urlpatterns = [
 #end basic link  
     path('signup', Signup.as_view(), name='signup'),
     path('payment', Payment.as_view(), name='payment_page'), #/////////////////////////
-    path('payment_uipid', Payment_upi_id.as_view(), name='payment_uipid_page'), #/////////////////////////
     path('login', Login.as_view(), name='login'),
     path('logout', logout , name='logout'),
     path('cart', auth_middleware(Cart.as_view()) , name='cart'),
@@ -69,7 +66,3 @@ urlpatterns = [
 ]
 
 
-
-
-if settings.DEBUG:
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

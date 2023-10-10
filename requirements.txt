@@ -17,4 +17,3 @@ toml==0.10.2
 virtualenv==20.4.3
 wrapt==1.12.1
 django-jazzmin
-psycopg2-binary
