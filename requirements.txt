@@ -19,3 +19,5 @@ wrapt==1.12.1
 django-jazzmin
 psycopg2  
 psycopg2-binary
+django
+libpq-dev
