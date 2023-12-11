@@ -88,12 +88,12 @@ WSGI_APPLICATION = 'inneruplift.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'postgresql://postgres:E3*F6Abde64D66gFA-gBGcd2gfBdcb-C@viaduct.proxy.rlwy.net:49304/railway',
         'NAME': 'railway',
         'USER': 'postgres',
-        'PASSWORD': '8BbtzgpVVgi02VrtmNv1',
-        'HOST': 'containers-us-west-75.railway.app',
-        'PORT': '6609'
+        'PASSWORD': 'E3*F6Abde64D66gFA-gBGcd2gfBdcb-C',
+        'HOST': 'viaduct.proxy.rlwy.net',
+        'PORT': '49304'
     }
 }
 
